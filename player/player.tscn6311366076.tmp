@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://tkgp05hf7nga"]
+
+[ext_resource type="Script" uid="uid://d2o4wyev03hfo" path="res://player/scripts/player.gd" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://dv4v40i2gsuoj" path="res://player/states/idle.gd" id="2_rkbax"]
+[ext_resource type="Script" uid="uid://b3wo0dd3ca7f7" path="res://player/states/run.gd" id="3_g1dw6"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kqu6x"]
+size = Vector2(32, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqu6x"]
+size = Vector2(28, 60)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_oul6g")
+run_speed = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = SubResource("PlaceholderTexture2D_kqu6x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -30)
+shape = SubResource("RectangleShape2D_kqu6x")
+debug_color = Color(0, 0.6, 0.69803923, 0.19607843)
+
+[node name="States" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Idle" type="Node" parent="States"]
+unique_name_in_owner = true
+script = ExtResource("2_rkbax")
+
+[node name="Run" type="Node" parent="States"]
+unique_name_in_owner = true
+script = ExtResource("3_g1dw6")
+
+[node name="State_Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -88.0
+offset_right = 20.0
+offset_bottom = -65.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 12
+text = "状态"
+horizontal_alignment = 1
+vertical_alignment = 1
