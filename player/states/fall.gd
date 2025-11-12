@@ -4,7 +4,7 @@ extends Player_State
 @export var fall_gravity_multiper: float = 1.15
 @export var coyote_time: float = 0.1
 # 落地前一段时间预先记录跳跃指令
-@export var jump_buffer_time: float = 0.2
+@export var jump_buffer_time: float = 0.1
 
 
 var coyote_timer: float = 0
