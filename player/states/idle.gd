@@ -11,7 +11,7 @@ func init():
 
 # 进入状态
 func enter():
-	pass
+	player.anim_player.play("idle")
 
 
 # 退出状态
@@ -23,6 +23,8 @@ func exit():
 func handle_input(_event: InputEvent) -> Player_State:
 	if _event.is_action_pressed("jump"):
 		return jump
+	elif _event.is_action_pressed("crouch"):
+		return crouch
 	
 	return next_state
 
@@ -31,6 +33,8 @@ func handle_input(_event: InputEvent) -> Player_State:
 func process(_delta: float) -> Player_State:
 	if player.direction.x != 0:
 		return run
+	elif player.direction.y >= 0.5:
+		pass
 	
 	return next_state
 

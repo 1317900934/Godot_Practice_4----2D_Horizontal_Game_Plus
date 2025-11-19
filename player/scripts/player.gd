@@ -2,6 +2,14 @@ class_name Player
 extends CharacterBody2D
 
 
+@onready var collision_stand: CollisionShape2D = $CollisionStand
+@onready var collision_crouch: CollisionShape2D = $CollisionCrouch
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var one_way_platform_shape_cast: ShapeCast2D = $One_Way_Platform_ShapeCast
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
+
+
+
 #region 导出变量
 # 奔跑速度
 @export var run_speed: float = 200
@@ -113,9 +121,14 @@ func change_state(new_state: Player_State):
 
 # 更新方向
 func update_direction():
-	#var pre_dir: Vector2 = direction
+	var pre_dir: Vector2 = direction
 	
 	var x_axis = Input.get_axis("left", "right")
 	var y_axis = Input.get_axis("up", "down")
 	direction = Vector2(x_axis, y_axis)
 	
+	if pre_dir.x != direction.x:
+		if direction.x < 0:
+			sprite.flip_h = true
+		elif direction.x > 0:
+			sprite.flip_h = false

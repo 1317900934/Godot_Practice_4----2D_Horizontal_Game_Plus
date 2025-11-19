@@ -3,7 +3,7 @@ extends Player_State
 
 
 # 跳跃力
-@export var jump_velocity: float = 450.0
+@export var jump_velocity: float = 480.0
 
 
 
@@ -14,6 +14,7 @@ func init():
 
 # 进入状态
 func enter():
+	player.anim_player.play("jump")
 	player.velocity.y = -jump_velocity
 
 
@@ -25,7 +26,7 @@ func exit():
 # 用户输入处理
 func handle_input(event: InputEvent) -> Player_State:
 	if event.is_action_released("jump"):
-		player.velocity.y *= 0.2
+		player.velocity.y *= 0.1
 		return fall
 	return next_state
 

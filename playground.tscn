@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://rqwtfyxho0vy"]
+[gd_scene load_steps=8 format=3 uid="uid://rqwtfyxho0vy"]
 
 [ext_resource type="PackedScene" uid="uid://tkgp05hf7nga" path="res://player/player.tscn" id="1_rupst"]
 
@@ -12,6 +12,18 @@ height = 32
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_edjgo"]
 size = Vector2(32, 32)
+
+[sub_resource type="Gradient" id="Gradient_rupst"]
+offsets = PackedFloat32Array(0.25301206, 0.6204819)
+colors = PackedColorArray(0.48000002, 0.67066675, 1, 1, 0.48000002, 0.67066675, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wt17y"]
+gradient = SubResource("Gradient_rupst")
+height = 60
+fill_to = Vector2(0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rupst"]
+size = Vector2(64, 32)
 
 [node name="Playground" type="Node2D"]
 
@@ -88,6 +100,20 @@ texture = SubResource("GradientTexture2D_rupst")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Sprite2D7/StaticBody2D"]
 shape = SubResource("RectangleShape2D_edjgo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(338.00003, 208.25)
+scale = Vector2(2.0625, 0.4140624)
+texture = SubResource("GradientTexture2D_wt17y")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(-1.4796402e-05, -14.222237)
+shape = SubResource("RectangleShape2D_rupst")
+one_way_collision = true
 
 [node name="Player" parent="." instance=ExtResource("1_rupst")]
 position = Vector2(253, 175)
