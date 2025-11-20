@@ -15,6 +15,7 @@ func init():
 # 进入状态
 func enter():
 	player.anim_player.play("jump")
+	player.anim_player.pause()
 	player.velocity.y = -jump_velocity
 
 
@@ -33,7 +34,7 @@ func handle_input(event: InputEvent) -> Player_State:
 
 # 状态进行
 func process(_delta: float) -> Player_State:
-	
+	set_jump_frame()
 	return next_state
 
 
@@ -46,3 +47,11 @@ func physics_process(_delta: float) -> Player_State:
 	player.velocity.x = player.direction.x * player.run_speed
 	
 	return next_state
+
+
+
+
+
+func set_jump_frame():
+	var frame: float = remap(player.velocity.y, -jump_velocity, 0.0, 0.0, 0.5)
+	player.anim_player.seek(frame, true)

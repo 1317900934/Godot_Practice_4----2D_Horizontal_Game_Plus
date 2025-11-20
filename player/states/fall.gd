@@ -23,6 +23,9 @@ func init():
 
 # 进入状态
 func enter():
+	player.anim_player.play("jump")
+	player.anim_player.pause()
+	
 	player.gravity_multiper = fall_gravity_multiper
 	if player.previous_state == jump:
 		coyote_timer = 0
@@ -53,6 +56,7 @@ func process(_delta: float) -> Player_State:
 	coyote_timer -= _delta
 	jump_buffer_timer -= _delta
 	crouch_buffer_timer -= _delta
+	set_jump_frame()
 	return next_state
 
 
@@ -67,3 +71,11 @@ func physics_process(_delta: float) -> Player_State:
 	
 	player.velocity.x = player.direction.x * player.run_speed
 	return next_state
+
+
+
+
+func set_jump_frame():
+	var frame: float = remap(player.velocity.y, 0.0, player.max_fall_velocity, 0.5, 1.0)
+	player.anim_player.seek(frame, true)
+	pass

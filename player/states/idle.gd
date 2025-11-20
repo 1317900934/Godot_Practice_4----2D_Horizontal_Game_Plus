@@ -26,7 +26,7 @@ func handle_input(_event: InputEvent) -> Player_State:
 	elif _event.is_action_pressed("crouch"):
 		return crouch
 	
-	return next_state
+	return null
 
 
 # 状态进行
@@ -36,7 +36,7 @@ func process(_delta: float) -> Player_State:
 	elif player.direction.y >= 0.5:
 		pass
 	
-	return next_state
+	return null
 
 
 # 物理状态进行

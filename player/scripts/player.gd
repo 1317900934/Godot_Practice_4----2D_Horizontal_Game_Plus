@@ -13,6 +13,8 @@ extends CharacterBody2D
 #region 导出变量
 # 奔跑速度
 @export var run_speed: float = 200
+# 最大下落速度
+@export var max_fall_velocity: float = 600.0
 #endregion
 
 
@@ -55,6 +57,9 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	# 施加重力
 	velocity.y += gravity * _delta * gravity_multiper
+	# 限制下落速度
+	velocity.y = clampf(velocity.y, -5000.0, max_fall_velocity)
+	
 	move_and_slide()
 	
 	change_state(current_state.physics_process(_delta))
