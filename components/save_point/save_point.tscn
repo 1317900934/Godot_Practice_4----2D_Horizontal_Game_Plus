@@ -1,0 +1,407 @@
+[gd_scene load_steps=29 format=3 uid="uid://d361h0ckjxlar"]
+
+[ext_resource type="Texture2D" uid="uid://mq4t20rito2t" path="res://levels/tilesets/sprites/props.png" id="1_2nbjn"]
+[ext_resource type="Shader" uid="uid://dbcmgqh0in55w" path="res://materials_and_shaders/outline.gdshader" id="1_6svjx"]
+[ext_resource type="Script" uid="uid://u0veix1nvhsv" path="res://components/save_point/save_point.gd" id="1_0085u"]
+
+[sub_resource type="Animation" id="Animation_ybk24"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Gem:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -30)]
+}
+
+[sub_resource type="Animation" id="Animation_n1mio"]
+resource_name = "default"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Gem:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.95),
+"transitions": PackedFloat32Array(-2, 2),
+"update": 0,
+"values": [Vector2(0, -36), Vector2(0, -30)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y37lg"]
+_data = {
+&"RESET": SubResource("Animation_ybk24"),
+&"default": SubResource("Animation_n1mio")
+}
+
+[sub_resource type="Gradient" id="Gradient_2nbjn"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6svjx"]
+gradient = SubResource("Gradient_2nbjn")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2nbjn"]
+size = Vector2(100, 73)
+
+[sub_resource type="Animation" id="Animation_0085u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-64, -90)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sprite/Gem/PointLight2D:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+
+[sub_resource type="Animation" id="Animation_6svjx"]
+resource_name = "saved"
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(-72, -100), Vector2(-72, -115), Vector2(-72, -110)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.20999998, 2.7333333, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sprite/Gem/PointLight2D:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.55, 1.35),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [0.5, 3.0, 3.0, 0.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_02mms"]
+_data = {
+&"RESET": SubResource("Animation_0085u"),
+&"saved": SubResource("Animation_6svjx")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6svjx"]
+shader = ExtResource("1_6svjx")
+shader_parameter/outline_width = 1.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/texture_region = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0085u"]
+shader = ExtResource("1_6svjx")
+shader_parameter/outline_width = 1.0
+shader_parameter/outline_color = Color(1, 1, 1, 0)
+shader_parameter/texture_region = Vector4(0, 0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybk24"]
+atlas = ExtResource("1_2nbjn")
+region = Rect2(80, 8, 32, 40)
+
+[sub_resource type="Gradient" id="Gradient_n1mio"]
+offsets = PackedFloat32Array(0.3956044, 0.7087912)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ybk24"]
+gradient = SubResource("Gradient_n1mio")
+width = 24
+height = 24
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_ybk24"]
+offsets = PackedFloat32Array(0, 0.1641791, 0.79850745, 1)
+colors = PackedColorArray(0.42489073, 0.3413261, 0.7557239, 0, 0.16842031, 0.15382189, 0.27129042, 1, 0.14670168, 0.13570002, 0.23, 1, 0.11958001, 0.111600004, 0.18, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y37lg"]
+gradient = SubResource("Gradient_ybk24")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4c1rb"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(16, 16, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, -5, 0)
+scale_min = 0.099999994
+scale_max = 0.14999999
+color_ramp = SubResource("GradientTexture1D_y37lg")
+
+[sub_resource type="Gradient" id="Gradient_0085u"]
+offsets = PackedFloat32Array(0.22380953, 1)
+colors = PackedColorArray(0.60698146, 0.5309233, 0.982169, 1, 0.33036935, 0.10087239, 0.84494704, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_02mms"]
+gradient = SubResource("Gradient_0085u")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_02mms"]
+shader = ExtResource("1_6svjx")
+shader_parameter/outline_width = 1.0
+shader_parameter/outline_color = Color(1, 1, 1, 0)
+shader_parameter/texture_region = Vector4(0, 0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y37lg"]
+atlas = ExtResource("1_2nbjn")
+region = Rect2(8, 40, 48, 24)
+
+[sub_resource type="Animation" id="Animation_w4ndr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Gem:material:shader_parameter/outline_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/Base:material:shader_parameter/outline_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_02mms"]
+resource_name = "fade_in"
+length = 0.1
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Gem:material:shader_parameter/outline_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 2,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/Base:material:shader_parameter/outline_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 2,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7sctf"]
+resource_name = "fade_out"
+length = 0.1
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Gem:material:shader_parameter/outline_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 2,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/Base:material:shader_parameter/outline_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 2,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7sctf"]
+_data = {
+&"RESET": SubResource("Animation_w4ndr"),
+&"fade_in": SubResource("Animation_02mms"),
+&"fade_out": SubResource("Animation_7sctf")
+}
+
+[node name="Save_Point" type="Node2D"]
+script = ExtResource("1_0085u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_y37lg")
+}
+autoplay = "default"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.07704627, 0.03741334, 0.17482522, 1)
+energy = 1.54
+texture = SubResource("GradientTexture2D_6svjx")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -31.5)
+shape = SubResource("RectangleShape2D_2nbjn")
+debug_color = Color(0.06930001, 0.63, 0.42440996, 0.078431375)
+
+[node name="Saved_Tips" type="Node2D" parent="."]
+
+[node name="Saved_Anim" type="AnimationPlayer" parent="Saved_Tips"]
+libraries = {
+&"": SubResource("AnimationLibrary_02mms")
+}
+
+[node name="Label" type="Label" parent="Saved_Tips"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = -64.0
+offset_top = -90.0
+offset_right = 80.0
+offset_bottom = -58.468964
+theme_override_colors/font_shadow_color = Color(0.18461998, 0.0756, 0.36, 0.3647059)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 20
+text = "进度已保存"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite" type="Node2D" parent="."]
+material = SubResource("ShaderMaterial_6svjx")
+
+[node name="Gem" type="Sprite2D" parent="Sprite"]
+self_modulate = Color(0.6290712, 0.6290712, 0.6290712, 1)
+material = SubResource("ShaderMaterial_0085u")
+position = Vector2(0, -30)
+texture = SubResource("AtlasTexture_ybk24")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite/Gem"]
+position = Vector2(0, 1.6866188)
+texture = SubResource("GradientTexture2D_ybk24")
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_4c1rb")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite/Gem"]
+position = Vector2(0, 0.99999666)
+scale = Vector2(1.25, 1.2812499)
+energy = 0.5
+texture = SubResource("GradientTexture2D_02mms")
+
+[node name="Base" type="Sprite2D" parent="Sprite"]
+material = SubResource("ShaderMaterial_02mms")
+position = Vector2(0, -11)
+texture = SubResource("AtlasTexture_y37lg")
+
+[node name="Outline_Control" type="AnimationPlayer" parent="Sprite"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_7sctf")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

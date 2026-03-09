@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var one_way_platform_shape_cast: ShapeCast2D = $One_Way_Platform_ShapeCast
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var camera_2d: Camera2D = $Camera2D
 
 
 
@@ -30,6 +31,33 @@ var previous_state: Player_State:
 #endregion
 
 
+
+#region 玩家属性
+
+var hp: float = 100:
+	set(v):
+		hp = clampf(v, 0, max_hp)
+		Messages.player_hp_changed.emit(hp, max_hp)
+
+var max_hp: float = 100:
+	set(v):
+		max_hp = clampf(v, 0, 500)
+		Messages.player_hp_changed.emit(hp, max_hp)
+
+# 是否能冲刺
+var dash: bool = false
+# 是否能二段跳
+var double_jump: bool = false
+# 是否能砸地攻击
+var ground_slam: bool = false
+# 是否能翻滚
+var roll: bool = false
+
+#endregion
+
+
+
+
 #region 标准变量
 # 玩家方向
 var direction: Vector2 = Vector2.ZERO
@@ -43,7 +71,17 @@ var gravity_multiper: float = 1.0
 
 
 func _ready() -> void:
+	
+	if get_tree().get_first_node_in_group("Player") != self:
+		self.queue_free()
+	
 	initialize_states()
+	# 将自己移动到场景树的根节点
+	self.call_deferred("reparent", get_tree().root)
+	
+	Messages.player_hp_changed.emit(hp, max_hp)
+	Messages.player_healed.connect(_on_player_healed)
+	Messages.back_title.connect(queue_free)
 
 
 
@@ -70,7 +108,24 @@ func _physics_process(_delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	
+	# 用户按下不同按键时触发对应效果
+	if event.is_action_pressed("interact, confirm"):
+		Messages.player_interacted.emit(self)
+	elif event.is_action_pressed("pause"):
+		get_tree().paused = true
+		var pause_menu: Pause_Menu = load("res://pause_menu/pause_menu.tscn").instantiate()
+		add_child(pause_menu)
+		return
+	
+	# 有按键输入时，随时监控并改变角色状态
 	change_state(current_state.handle_input(event))
+	
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_1:
+			hp -= 2
+		elif event.keycode == KEY_2:
+			hp += 2
 
 
 
@@ -137,3 +192,13 @@ func update_direction():
 			sprite.flip_h = true
 		elif direction.x > 0:
 			sprite.flip_h = false
+
+
+
+# 治愈玩家
+func _on_player_healed(amount: float):
+	hp += amount
+
+
+func reset_camera():
+	camera_2d.reset_smoothing()

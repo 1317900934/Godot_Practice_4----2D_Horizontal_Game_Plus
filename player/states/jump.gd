@@ -17,6 +17,12 @@ func enter():
 	player.anim_player.play("jump")
 	player.anim_player.pause()
 	player.velocity.y = -jump_velocity
+	
+	# 如果上一个状态是下落,且当前没有按住跳跃键,就等待一个物理帧后中断跳跃
+	if player.previous_state == fall and not Input.is_action_pressed("jump"):
+		await get_tree().physics_frame
+		player.velocity.y *= 0.1
+		player.change_state(fall)
 
 
 # 退出状态
@@ -51,7 +57,7 @@ func physics_process(_delta: float) -> Player_State:
 
 
 
-
+# 将跳跃和下落加速度的值映射到对应动画时间的帧
 func set_jump_frame():
 	var frame: float = remap(player.velocity.y, -jump_velocity, 0.0, 0.0, 0.5)
 	player.anim_player.seek(frame, true)

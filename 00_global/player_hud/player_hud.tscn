@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkbaxbywp7lo7"]
+
+[ext_resource type="Texture2D" uid="uid://6iio25fgjo0e" path="res://00_global/player_hud/hp_bar_frame.png" id="1_hv14i"]
+[ext_resource type="Script" uid="uid://c5plvrdp3xiiw" path="res://00_global/player_hud/player_hud.gd" id="1_vb1bs"]
+
+[sub_resource type="Gradient" id="Gradient_vb1bs"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.10261727, 0.102617316, 0.10261727, 0.5882353)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vb1bs"]
+gradient = SubResource("Gradient_vb1bs")
+
+[sub_resource type="Gradient" id="Gradient_26715"]
+colors = PackedColorArray(0.7, 0.13999999, 0.29866663, 1, 0.75, 0.45000002, 0.56499994, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_26715"]
+gradient = SubResource("Gradient_26715")
+
+[node name="Player_HUD" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_vb1bs")
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HP_MarginContainer" type="MarginContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 17.0
+offset_right = -520.0
+offset_bottom = -311.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HUD/HP_MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_hv14i")
+region_rect = Rect2(0, 0, 64, 32)
+patch_margin_left = 29
+patch_margin_right = 11
+
+[node name="HP_Bar" type="TextureProgressBar" parent="HUD/HP_MarginContainer/NinePatchRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 13.0
+offset_right = -8.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 50.0
+rounded = true
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_vb1bs")
+texture_progress = SubResource("GradientTexture2D_26715")

@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://daiijpsanbbqq"
+path="res://.godot/imported/door_switch.sfxr-8b45a7dccc0e3e11497a5c8e43af3b80.sample"
+
+[deps]
+
+source_file="res://music/sfx/door_switch.sfxr"
+dest_files=["res://.godot/imported/door_switch.sfxr-8b45a7dccc0e3e11497a5c8e43af3b80.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

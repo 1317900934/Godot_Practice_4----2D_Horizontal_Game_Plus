@@ -1,0 +1,536 @@
+[gd_scene load_steps=21 format=4 uid="uid://ctrdcgddey34q"]
+
+[ext_resource type="Script" uid="uid://n8mjkv1860dn" path="res://title_screen/title_screen.gd" id="1_2dq6q"]
+[ext_resource type="TileSet" uid="uid://c7boomkqofu88" path="res://levels/tilesets/initial_place.tres" id="1_dxpbd"]
+[ext_resource type="Material" uid="uid://bipmh3bfoe1ss" path="res://materials_and_shaders/fog_fade_material.tres" id="2_2dq6q"]
+[ext_resource type="Script" uid="uid://bw2tn1b21r6dy" path="res://music/music_auto_trigger.gd" id="4_vbjqi"]
+[ext_resource type="AudioStream" uid="uid://elpkduecxo0u" path="res://music/bgm/title_01.ogg" id="5_0m3ch"]
+
+[sub_resource type="Gradient" id="Gradient_yljbb"]
+offsets = PackedFloat32Array(0.32446808, 0.5265958, 0.64361703)
+colors = PackedColorArray(0.07558791, 0.13535878, 0.1516636, 1, 0.48160002, 0.48552, 0.56, 1, 0.088816665, 0.039, 0.1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vbjqi"]
+gradient = SubResource("Gradient_yljbb")
+width = 512
+height = 512
+fill_to = Vector2(0, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0m3ch"]
+
+[sub_resource type="Gradient" id="Gradient_r8oly"]
+colors = PackedColorArray(0.68890274, 0.69256544, 0.97230107, 1, 0.44771695, 0.39288086, 0.8979447, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fk0fn"]
+gradient = SubResource("Gradient_r8oly")
+width = 24
+height = 24
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_oqrgu"]
+offsets = PackedFloat32Array(0.51428574, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yo3k3"]
+gradient = SubResource("Gradient_oqrgu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fv0o7"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 50, 1)
+direction = Vector3(0, 0, 0)
+initial_velocity_min = -50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, -15, 0)
+scale_min = 0.29999998
+scale_max = 0.59999996
+color_ramp = SubResource("GradientTexture1D_yo3k3")
+hue_variation_min = -0.020000022
+hue_variation_max = 0.019999977
+
+[sub_resource type="Gradient" id="Gradient_3m0tt"]
+offsets = PackedFloat32Array(0.20212767, 1)
+colors = PackedColorArray(0.90985, 0.80910003, 0.93, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r8oly"]
+frequency = 0.007
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1oos5"]
+height = 1024
+noise = SubResource("FastNoiseLite_r8oly")
+color_ramp = SubResource("Gradient_3m0tt")
+seamless = true
+normalize = false
+seamless_blend_skirt = 0.25
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fh6ay"]
+height = 480
+noise = SubResource("FastNoiseLite_r8oly")
+color_ramp = SubResource("Gradient_3m0tt")
+seamless = true
+seamless_blend_skirt = 0.25
+
+[sub_resource type="Gradient" id="Gradient_yo3k3"]
+offsets = PackedFloat32Array(0.40957448, 0.62765956)
+colors = PackedColorArray(0.25433335, 0.21839999, 0.28, 0.3529412, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jabur"]
+gradient = SubResource("Gradient_yo3k3")
+width = 512
+height = 512
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p7x7j"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 50, 1)
+direction = Vector3(0, 0, 0)
+initial_velocity_min = -50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, -20, 0)
+scale_min = 0.79999995
+scale_max = 1.1999999
+color_ramp = SubResource("GradientTexture1D_yo3k3")
+hue_variation_min = -0.020000022
+hue_variation_max = 0.019999977
+
+[node name="Title_Screen" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_2dq6q")
+
+[node name="Music_Auto_Trigger" type="Node" parent="."]
+script = ExtResource("4_vbjqi")
+track = ExtResource("5_0m3ch")
+metadata/_custom_type_script = "uid://bw2tn1b21r6dy"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15259093, 0.15259093, 0.15259093, 1)
+
+[node name="Background" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ParallaxLayers" type="Node2D" parent="Control/Background"]
+z_index = -5
+
+[node name="BG_3" type="Parallax2D" parent="Control/Background/ParallaxLayers"]
+scroll_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Background/ParallaxLayers/BG_3"]
+position = Vector2(317, 186)
+scale = Vector2(2.8007813, 1.4375001)
+texture = SubResource("GradientTexture2D_vbjqi")
+
+[node name="Particle_2" type="Parallax2D" parent="Control/Background/ParallaxLayers"]
+scroll_scale = Vector2(1, 0.75)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Control/Background/ParallaxLayers/Particle_2"]
+modulate = Color(0.9124393, 0.9124393, 0.9124393, 0.78431374)
+material = SubResource("CanvasItemMaterial_0m3ch")
+position = Vector2(344, 411)
+amount = 3
+texture = SubResource("GradientTexture2D_fk0fn")
+lifetime = 10.0
+preprocess = 1.0
+randomness = 0.8
+visibility_rect = Rect2(-1500, -850, 3000, 850)
+process_material = SubResource("ParticleProcessMaterial_fv0o7")
+
+[node name="BG_2" type="Parallax2D" parent="Control/Background/ParallaxLayers"]
+modulate = Color(0.4194535, 0.43637383, 0.5040553, 1)
+scroll_scale = Vector2(0.5, 0.7)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Control/Background/ParallaxLayers/BG_2"]
+position = Vector2(0, 3)
+tile_map_data = PackedByteArray("AAD5/wkAAQAOAAgAAAD5/woAAQAQAAkAAAD5/wsAAQABAAEAAAD5/wwAAQABAAEAAAD5/w0AAQABAAEAAAD5/w4AAQABAAEAAAD6/wkAAQAOAAgAAAD6/woAAQAOAAkAAAD6/wsAAQABAAEAAAD6/wwAAQABAAEAAAD6/w0AAQABAAEAAAD6/w4AAQABAAEAAAD7/wkAAQAOAAgAAAD7/woAAQAPAAkAAAD7/wsAAQABAAEAAAD7/wwAAQABAAEAAAD7/w0AAQABAAEAAAD7/w4AAQABAAEAAAD8/wkAAQAOAAgAAAD8/woAAQAQAAkAAAD8/wsAAQABAAEAAAD8/wwAAQABAAEAAAD8/w0AAQABAAEAAAD8/w4AAQABAAEAAAD9/wkAAQAOAAgAAAD9/woAAQAOAAkAAAD9/wsAAQABAAEAAAD9/wwAAQABAAEAAAD9/w0AAQABAAEAAAD9/w4AAQABAAEAAAD+/wkAAQAOAAgAAAD+/woAAQAPAAkAAAD+/wsAAQABAAEAAAD+/wwAAQABAAEAAAD+/w0AAQABAAEAAAD+/w4AAQABAAEAAAD//wkAAQAOAAgAAAD//woAAQAQAAkAAAD//wsAAQABAAEAAAD//wwAAQABAAEAAAD//w0AAQABAAEAAAD//w4AAQABAAEAAAAAAAkAAQAOAAgAAAAAAAoAAQAOAAkAAAAAAAsAAQABAAEAAAAAAAwAAQABAAEAAAAAAA0AAQABAAEAAAAAAA4AAQABAAEAAAABAAkAAQAOAAgAAAABAAoAAQAOAAkAAAABAAsAAQABAAEAAAABAAwAAQABAAEAAAABAA0AAQABAAEAAAABAA4AAQABAAEAAAACAAkAAQAOAAgAAAACAAoAAQAPAAkAAAACAAsAAQABAAEAAAACAAwAAQABAAEAAAACAA0AAQABAAEAAAACAA4AAQABAAEAAAADAAkAAQAOAAgAAAADAAoAAQAQAAkAAAADAAsAAQABAAEAAAADAAwAAQABAAEAAAADAA0AAQABAAEAAAADAA4AAQABAAEAAAAEAAkAAQAOAAgAAAAEAAoAAQAOAAkAAAAEAAsAAQABAAEAAAAEAAwAAQABAAEAAAAEAA0AAQABAAEAAAAEAA4AAQABAAEAAAAFAAkAAQAOAAgAAAAFAAoAAQAPAAkAAAAFAAsAAQABAAEAAAAFAAwAAQABAAEAAAAFAA0AAQABAAEAAAAFAA4AAQABAAEAAAAGAAkAAQAOAAgAAAAGAAoAAQAQAAkAAAAGAAsAAQABAAEAAAAGAAwAAQABAAEAAAAGAA0AAQABAAEAAAAGAA4AAQABAAEAAAAHAAkAAQAOAAgAAAAHAAoAAQAOAAkAAAAHAAsAAQABAAEAAAAHAAwAAQABAAEAAAAHAA0AAQABAAEAAAAHAA4AAQABAAEAAAAIAAkAAQAOAAgAAAAIAAoAAQAPAAkAAAAIAAsAAQABAAEAAAAIAAwAAQABAAEAAAAIAA0AAQABAAEAAAAIAA4AAQABAAEAAAAJAAkAAQAOAAgAAAAJAAoAAQAQAAkAAAAJAAsAAQABAAEAAAAJAAwAAQABAAEAAAAJAA0AAQABAAEAAAAJAA4AAQABAAEAAAAKAAkAAQAOAAgAAAAKAAoAAQAOAAkAAAAKAAsAAQABAAEAAAAKAAwAAQABAAEAAAAKAA0AAQABAAEAAAAKAA4AAQABAAEAAAALAAkAAQAOAAgAAAALAAoAAQAPAAkAAAALAAsAAQABAAEAAAALAAwAAQABAAEAAAALAA0AAQABAAEAAAALAA4AAQABAAEAAAAMAAkAAQAOAAgAAAAMAAoAAQAQAAkAAAAMAAsAAQABAAEAAAAMAAwAAQABAAEAAAAMAA0AAQABAAEAAAAMAA4AAQABAAEAAAANAAkAAQAOAAgAAAANAAoAAQAOAAkAAAANAAsAAQABAAEAAAANAAwAAQABAAEAAAANAA0AAQABAAEAAAANAA4AAQABAAEAAAAOAAkAAQAOAAgAAAAOAAoAAQAOAAkAAAAOAAsAAQABAAEAAAAOAAwAAQABAAEAAAAOAA0AAQABAAEAAAAOAA4AAQABAAEAAAAPAAkAAQAOAAgAAAAPAAoAAQAPAAkAAAAPAAsAAQABAAEAAAAPAAwAAQABAAEAAAAPAA0AAQABAAEAAAAPAA4AAQABAAEAAAAQAAkAAQAOAAgAAAAQAAoAAQAQAAkAAAAQAAsAAQABAAEAAAAQAAwAAQABAAEAAAAQAA0AAQABAAEAAAAQAA4AAQABAAEAAAARAAkAAQAOAAgAAAARAAoAAQAOAAkAAAARAAsAAQABAAEAAAARAAwAAQABAAEAAAARAA0AAQABAAEAAAARAA4AAQABAAEAAAASAAkAAQAOAAgAAAASAAoAAQAPAAkAAAASAAsAAQABAAEAAAASAAwAAQABAAEAAAASAA0AAQABAAEAAAASAA4AAQABAAEAAAATAAkAAQAOAAgAAAATAAoAAQAQAAkAAAATAAsAAQABAAEAAAATAAwAAQABAAEAAAATAA0AAQABAAEAAAATAA4AAQABAAEAAAAUAAkAAQAOAAgAAAAUAAoAAQAOAAkAAAAUAAsAAQABAAEAAAAUAAwAAQABAAEAAAAUAA0AAQABAAEAAAAUAA4AAQABAAEAAAAVAAkAAQAOAAgAAAAVAAoAAQAPAAkAAAAVAAsAAQABAAEAAAAVAAwAAQABAAEAAAAVAA0AAQABAAEAAAAVAA4AAQABAAEAAAAWAAkAAQAOAAgAAAAWAAoAAQAQAAkAAAAWAAsAAQABAAEAAAAWAAwAAQABAAEAAAAWAA0AAQABAAEAAAAWAA4AAQABAAEAAAAXAAkAAQAOAAgAAAAXAAoAAQAOAAkAAAAXAAsAAQABAAEAAAAXAAwAAQABAAEAAAAXAA0AAQABAAEAAAAXAA4AAQABAAEAAAAYAAkAAQAOAAgAAAAYAAoAAQAPAAkAAAAYAAsAAQABAAEAAAAYAAwAAQABAAEAAAAYAA0AAQABAAEAAAAYAA4AAQABAAEAAAAZAAkAAQAOAAgAAAAZAAoAAQAQAAkAAAAZAAsAAQABAAEAAAAZAAwAAQABAAEAAAAZAA0AAQABAAEAAAAZAA4AAQABAAEAAAAaAAkAAQAOAAgAAAAaAAoAAQAOAAkAAAAaAAsAAQABAAEAAAAaAAwAAQABAAEAAAAaAA0AAQABAAEAAAAaAA4AAQABAAEAAAD5/w8AAQABAAEAAAD5/xAAAQABAAEAAAD6/w8AAQABAAEAAAD6/xAAAQABAAEAAAD7/w8AAQABAAEAAAD7/xAAAQABAAEAAAD8/w8AAQABAAEAAAD8/xAAAQABAAEAAAD9/w8AAQABAAEAAAD9/xAAAQABAAEAAAD+/w8AAQABAAEAAAD+/xAAAQABAAEAAAD//w8AAQABAAEAAAD//xAAAQABAAEAAAAAAA8AAQABAAEAAAAAABAAAQABAAEAAAABAA8AAQABAAEAAAABABAAAQABAAEAAAACAA8AAQABAAEAAAACABAAAQABAAEAAAADAA8AAQABAAEAAAADABAAAQABAAEAAAAEAA8AAQABAAEAAAAEABAAAQABAAEAAAAFAA8AAQABAAEAAAAFABAAAQABAAEAAAAGAA8AAQABAAEAAAAGABAAAQABAAEAAAAHAA8AAQABAAEAAAAHABAAAQABAAEAAAAIAA8AAQABAAEAAAAIABAAAQABAAEAAAAJAA8AAQABAAEAAAAJABAAAQABAAEAAAAKAA8AAQABAAEAAAAKABAAAQABAAEAAAALAA8AAQABAAEAAAALABAAAQABAAEAAAAMAA8AAQABAAEAAAAMABAAAQABAAEAAAANAA8AAQABAAEAAAANABAAAQABAAEAAAAOAA8AAQABAAEAAAAOABAAAQABAAEAAAAPAA8AAQABAAEAAAAPABAAAQABAAEAAAAQAA8AAQABAAEAAAAQABAAAQABAAEAAAARAA8AAQABAAEAAAARABAAAQABAAEAAAASAA8AAQABAAEAAAASABAAAQABAAEAAAATAA8AAQABAAEAAAATABAAAQABAAEAAAAUAA8AAQABAAEAAAAUABAAAQABAAEAAAAVAA8AAQABAAEAAAAVABAAAQABAAEAAAAWAA8AAQABAAEAAAAWABAAAQABAAEAAAAXAA8AAQABAAEAAAAXABAAAQABAAEAAAAYAA8AAQABAAEAAAAYABAAAQABAAEAAAAZAA8AAQABAAEAAAAZABAAAQABAAEAAAAaAA8AAQABAAEAAAAaABAAAQABAAEAAAA=")
+tile_set = ExtResource("1_dxpbd")
+collision_enabled = false
+
+[node name="Dynamics_Fog2" type="Parallax2D" parent="Control/Background/ParallaxLayers"]
+z_index = 20
+repeat_size = Vector2(512, 0)
+autoscroll = Vector2(-30, 3)
+repeat_times = 3
+
+[node name="Dynamics_Fog" type="Sprite2D" parent="Control/Background/ParallaxLayers/Dynamics_Fog2"]
+modulate = Color(0.69757015, 0.48190004, 0.79, 0.15686275)
+material = ExtResource("2_2dq6q")
+position = Vector2(61, 88)
+texture = SubResource("NoiseTexture2D_1oos5")
+
+[node name="Dynamics_Fog" type="Parallax2D" parent="Control/Background/ParallaxLayers"]
+z_index = 20
+repeat_size = Vector2(512, 0)
+autoscroll = Vector2(-80, 5)
+repeat_times = 3
+
+[node name="Dynamics_Fog" type="Sprite2D" parent="Control/Background/ParallaxLayers/Dynamics_Fog"]
+modulate = Color(0.5827801, 0.40260002, 0.66, 0.09803922)
+material = ExtResource("2_2dq6q")
+position = Vector2(54, 335)
+texture = SubResource("NoiseTexture2D_fh6ay")
+
+[node name="Gradual_Fog" type="Parallax2D" parent="Control/Background/ParallaxLayers"]
+scroll_scale = Vector2(1, 1.1)
+
+[node name="Gradual_Fog" type="Sprite2D" parent="Control/Background/ParallaxLayers/Gradual_Fog"]
+position = Vector2(316.00003, 94.49997)
+scale = Vector2(3.0859375, 2.5410156)
+texture = SubResource("GradientTexture2D_jabur")
+
+[node name="Particle_1" type="Parallax2D" parent="Control/Background/ParallaxLayers"]
+scroll_scale = Vector2(1, 1.2)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Control/Background/ParallaxLayers/Particle_1"]
+z_index = 25
+position = Vector2(319, 436)
+texture = SubResource("GradientTexture2D_fk0fn")
+lifetime = 8.5
+preprocess = 2.0
+randomness = 0.8
+visibility_rect = Rect2(-1500, -850, 3000, 850)
+process_material = SubResource("ParticleProcessMaterial_p7x7j")
+
+[node name="Main_Menu" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main" type="VBoxContainer" parent="Control/Main_Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -95.0
+offset_right = 107.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Logo" type="Control" parent="Control/Main_Menu/Main"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Control/Main_Menu/Main/Logo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.5
+offset_top = -38.0
+offset_right = 114.5
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "失域"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="New_Game" type="Button" parent="Control/Main_Menu/Main"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "新开始"
+
+[node name="Load_Game" type="Button" parent="Control/Main_Menu/Main"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+text = "   回忆..."
+
+[node name="Exit_Game" type="Button" parent="Control/Main_Menu"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -66.0
+offset_top = -64.0
+offset_right = 66.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "退出"
+
+[node name="Load_Menu" type="Control" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Vbox" type="VBoxContainer" parent="Control/Load_Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = -107.0
+offset_right = 159.0
+offset_bottom = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Hint" type="Control" parent="Control/Load_Menu/Vbox"]
+custom_minimum_size = Vector2(100, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Control/Load_Menu/Vbox/Hint"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.5
+offset_top = -38.0
+offset_right = 114.5
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "选择记忆..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Load_Game_ScrollContainer" type="ScrollContainer" parent="Control/Load_Menu/Vbox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="Load_Save_Menu" type="VBoxContainer" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Start" type="Control" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu"]
+layout_mode = 2
+
+[node name="Load_Slot_1" type="Button" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "载入记忆01"
+
+[node name="Load_Slot_2" type="Button" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "载入记忆02"
+
+[node name="Load_Slot_3" type="Button" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "载入记忆03"
+
+[node name="Load_Slot_4" type="Button" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "载入记忆04"
+
+[node name="Load_Slot_5" type="Button" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "载入记忆05"
+
+[node name="End" type="Control" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu"]
+layout_mode = 2
+
+[node name="Load_Menu_Return" type="Button" parent="Control/Load_Menu"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -54.0
+offset_top = -55.0
+offset_right = 54.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "返回
+"
+
+[node name="New_Start_Menu" type="Control" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Vbox" type="VBoxContainer" parent="Control/New_Start_Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = -107.0
+offset_right = 172.0
+offset_bottom = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Hint" type="Control" parent="Control/New_Start_Menu/Vbox"]
+custom_minimum_size = Vector2(100, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Control/New_Start_Menu/Vbox/Hint"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.5
+offset_top = -38.0
+offset_right = 114.5
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "开始新记忆..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="New_Game_ScrollContainer" type="ScrollContainer" parent="Control/New_Start_Menu/Vbox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="Load_Save_Menu" type="VBoxContainer" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Start" type="Control" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu"]
+layout_mode = 2
+
+[node name="Start_New_1" type="Button" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "新记忆01"
+
+[node name="Start_New_2" type="Button" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "新记忆02"
+
+[node name="Start_New_3" type="Button" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "新记忆03"
+
+[node name="Start_New_4" type="Button" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "新记忆04"
+
+[node name="Start_New_5" type="Button" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "新记忆05"
+
+[node name="End" type="Control" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu"]
+layout_mode = 2
+
+[node name="New_Start_Menu_Return" type="Button" parent="Control/New_Start_Menu"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -54.0
+offset_top = -55.0
+offset_right = 54.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "返回
+"
+
+[connection signal="pressed" from="Control/Main_Menu/Exit_Game" to="." method="_on_exit_game_pressed"]

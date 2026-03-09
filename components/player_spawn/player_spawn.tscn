@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://doybbymqh1xu0"]
+
+[ext_resource type="Script" uid="uid://b8kt8wui72um8" path="res://components/player_spawn/player_spawn.gd" id="1_p6yqv"]
+[ext_resource type="Texture2D" uid="uid://0s24qb5055tw" path="res://player/sprites/player.png" id="1_worp7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yo3k3"]
+blend_mode = 1
+light_mode = 1
+
+[node name="Player_Spawn" type="Node2D"]
+z_index = 100
+script = ExtResource("1_p6yqv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.37131044, 1.1497489, 0.92066956, 0.706)
+material = SubResource("CanvasItemMaterial_yo3k3")
+position = Vector2(0, -39)
+texture = ExtResource("1_worp7")
+hframes = 16
+vframes = 4
