@@ -17,18 +17,26 @@ func enter():
 	player.anim_player.play("crouch")
 	player.collision_stand.disabled = true
 	player.collision_crouch.disabled = false
+	player.ha_stand.disabled = true
+	player.ha_crouch.disabled = false
 
 
 # 退出状态
 func exit():
 	player.collision_crouch.disabled = true
 	player.collision_stand.disabled = false
+	player.ha_crouch.disabled = true
+	player.ha_stand.disabled = false
 	player.sprite.frame = 0
 
 
 
 # 用户输入处理
 func handle_input(_event: InputEvent) -> Player_State:
+	
+	if _event.is_action_pressed("attack"):
+		return attack
+	
 	if _event.is_action_released("crouch"):
 		return idle
 	elif _event.is_action_pressed("jump"):

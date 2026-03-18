@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkbaxbywp7lo7"]
+[gd_scene format=3 uid="uid://bkbaxbywp7lo7"]
 
 [ext_resource type="Texture2D" uid="uid://6iio25fgjo0e" path="res://00_global/player_hud/hp_bar_frame.png" id="1_hv14i"]
 [ext_resource type="Script" uid="uid://c5plvrdp3xiiw" path="res://00_global/player_hud/player_hud.gd" id="1_vb1bs"]
+[ext_resource type="Resource" uid="uid://n3vmukeodht" path="res://00_global/visual_effects/hit_particles_settings/hit_magic_blue.tres" id="3_26715"]
 
 [sub_resource type="Gradient" id="Gradient_vb1bs"]
 offsets = PackedFloat32Array(0)
@@ -16,12 +17,31 @@ colors = PackedColorArray(0.7, 0.13999999, 0.29866663, 1, 0.75, 0.45000002, 0.56
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_26715"]
 gradient = SubResource("Gradient_26715")
 
-[node name="Player_HUD" type="CanvasLayer"]
+[sub_resource type="GDScript" id="GDScript_vb1bs"]
+script/source = "extends Button
+
+@export var particles_settings: Hit_Particles_Settings
+
+
+
+
+
+
+
+
+
+func _on_pressed() -> void:
+	var player: Player = get_tree().get_first_node_in_group(\"Player\")
+	
+	player.dash = !player.dash
+"
+
+[node name="Player_HUD" type="CanvasLayer" unique_id=1121142557]
 process_mode = 3
 layer = 2
 script = ExtResource("1_vb1bs")
 
-[node name="HUD" type="Control" parent="."]
+[node name="HUD" type="Control" parent="." unique_id=1711775807]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,26 +50,21 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="HP_MarginContainer" type="MarginContainer" parent="HUD"]
+[node name="HP_MarginContainer" type="MarginContainer" parent="HUD" unique_id=1209797877]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
 offset_left = 32.0
 offset_top = 17.0
-offset_right = -520.0
-offset_bottom = -311.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 120.0
+offset_bottom = 49.0
 
-[node name="NinePatchRect" type="NinePatchRect" parent="HUD/HP_MarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="HUD/HP_MarginContainer" unique_id=1187330374]
 layout_mode = 2
 texture = ExtResource("1_hv14i")
 region_rect = Rect2(0, 0, 64, 32)
 patch_margin_left = 29
 patch_margin_right = 11
 
-[node name="HP_Bar" type="TextureProgressBar" parent="HUD/HP_MarginContainer/NinePatchRect"]
+[node name="HP_Bar" type="TextureProgressBar" parent="HUD/HP_MarginContainer/NinePatchRect" unique_id=1662303291]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -66,3 +81,81 @@ rounded = true
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_vb1bs")
 texture_progress = SubResource("GradientTexture2D_26715")
+
+[node name="Button2" type="Button" parent="HUD" unique_id=1812301370]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 22.0
+offset_right = 534.0
+offset_bottom = 53.0
+text = "调试冲刺"
+script = SubResource("GDScript_vb1bs")
+particles_settings = ExtResource("3_26715")
+
+[node name="Game_Over" type="Control" parent="HUD" unique_id=1100204486]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="HUD/Game_Over" unique_id=1550878176]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.068609856, 0.06860982, 0.06860978, 0.94509804)
+
+[node name="Label" type="Label" parent="HUD/Game_Over" unique_id=950340781]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -68.0
+offset_right = 78.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.4819982, 0.43248284, 1)
+theme_override_font_sizes/font_size = 28
+text = "  记忆中断..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Game_Over" unique_id=1032816911]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = 58.0
+offset_right = 106.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Load_Button" type="Button" parent="HUD/Game_Over/HBoxContainer" unique_id=109536938]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "载入最后记忆"
+
+[node name="Quit_Button" type="Button" parent="HUD/Game_Over/HBoxContainer" unique_id=898603266]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "退回标题界面"
+
+[connection signal="pressed" from="HUD/Button2" to="HUD/Button2" method="_on_pressed"]

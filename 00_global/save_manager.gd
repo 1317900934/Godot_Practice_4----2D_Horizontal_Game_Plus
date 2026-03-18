@@ -30,24 +30,27 @@ func _ready() -> void:
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_F5:
-			save_game()
-		if event.keycode == KEY_F6:
-			load_game(current_slot)
-		if event.keycode == KEY_F1:
-			current_slot = 0
-			print("切换到存档槽1")
-		if event.keycode == KEY_F2:
-			current_slot = 1
-			print("切换到存档槽2")
-		if event.keycode == KEY_F3:
-			current_slot = 2
-			print("切换到存档槽3")
-		if event.keycode == KEY_F4:
-			current_slot = 4
-			print("切换到存档槽5")
 	
+	#region 调试功能
+	if OS.is_debug_build():
+		if event is InputEventKey and event.pressed:
+			if event.keycode == KEY_F5:
+				save_game()
+			if event.keycode == KEY_F6:
+				load_game(current_slot)
+			if event.keycode == KEY_F1:
+				current_slot = 0
+				print("切换到存档槽1")
+			if event.keycode == KEY_F2:
+				current_slot = 1
+				print("切换到存档槽2")
+			if event.keycode == KEY_F3:
+				current_slot = 2
+				print("切换到存档槽3")
+			if event.keycode == KEY_F4:
+				current_slot = 3
+				print("切换到存档槽4")
+	#endregion
 
 
 

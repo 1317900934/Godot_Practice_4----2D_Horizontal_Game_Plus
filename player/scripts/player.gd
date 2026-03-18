@@ -4,10 +4,18 @@ extends CharacterBody2D
 
 @onready var collision_stand: CollisionShape2D = $CollisionStand
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: Player_Sprite = $Sprite2D
 @onready var one_way_platform_shape_cast: ShapeCast2D = $One_Way_Platform_ShapeCast
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var camera_2d: Camera2D = $Camera2D
+@onready var attack_area: Attack_Area = %Attack_Area
+@onready var attack_sprite: Sprite2D = %Attack_Sprite
+@onready var ha_stand: CollisionShape2D = %HA_Stand
+@onready var ha_crouch: CollisionShape2D = %HA_Crouch
+@onready var hurt_area: Hurt_Area = %Hurt_Area
+
+
+signal damage_taken
 
 
 
@@ -46,8 +54,12 @@ var max_hp: float = 100:
 
 # 是否能冲刺
 var dash: bool = false
+# 冲刺计数
+var dash_count: int = 0
 # 是否能二段跳
-var double_jump: bool = false
+var double_jump: bool = true
+# 跳跃计数
+var jump_count: int = 0
 # 是否能砸地攻击
 var ground_slam: bool = false
 # 是否能翻滚
@@ -82,6 +94,10 @@ func _ready() -> void:
 	Messages.player_hp_changed.emit(hp, max_hp)
 	Messages.player_healed.connect(_on_player_healed)
 	Messages.back_title.connect(queue_free)
+	
+	hurt_area.damage_taken.connect(_on_damage_taken)
+	
+	hp = max_hp
 
 
 
@@ -108,7 +124,8 @@ func _physics_process(_delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	
+	if event.is_action_released("jump") and velocity.y < 0:
+		velocity.y *= 0.1
 	# 用户按下不同按键时触发对应效果
 	if event.is_action_pressed("interact, confirm"):
 		Messages.player_interacted.emit(self)
@@ -121,11 +138,21 @@ func _unhandled_input(event: InputEvent) -> void:
 	# 有按键输入时，随时监控并改变角色状态
 	change_state(current_state.handle_input(event))
 	
-	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_1:
-			hp -= 2
-		elif event.keycode == KEY_2:
-			hp += 2
+	
+	#region 调试功能
+	if OS.is_debug_build():
+		
+		if event is InputEventKey and event.pressed:
+			if event.keycode == KEY_KP_1:
+				hp -= 2
+			elif event.keycode == KEY_KP_2:
+				hp += 2
+			elif event.keycode == KEY_KP_ADD:
+				max_hp += 2
+			elif event.keycode == KEY_KP_SUBTRACT:
+				max_hp -= 2
+	
+	#endregion
 
 
 
@@ -188,10 +215,15 @@ func update_direction():
 	direction = Vector2(x_axis, y_axis)
 	
 	if pre_dir.x != direction.x:
+		attack_area.flip(direction.x)
 		if direction.x < 0:
 			sprite.flip_h = true
+			attack_sprite.flip_h = true
+			attack_sprite.position.x = -24
 		elif direction.x > 0:
 			sprite.flip_h = false
+			attack_sprite.flip_h = false
+			attack_sprite.position.x = 24
 
 
 
@@ -202,3 +234,21 @@ func _on_player_healed(amount: float):
 
 func reset_camera():
 	camera_2d.reset_smoothing()
+
+
+
+# 玩家受伤
+func _on_damage_taken(_attack_area: Attack_Area):
+	if current_state == Player_State_Death:
+		return
+	hp -= _attack_area.damage
+	damage_taken.emit()
+	print("玩家受伤：", hp)
+
+
+
+
+func can_dash() -> bool:
+	if dash == false or dash_count > 0:
+		return false
+	return true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://ctrdcgddey34q"]
+[gd_scene format=4 uid="uid://ctrdcgddey34q"]
 
 [ext_resource type="Script" uid="uid://n8mjkv1860dn" path="res://title_screen/title_screen.gd" id="1_2dq6q"]
 [ext_resource type="TileSet" uid="uid://c7boomkqofu88" path="res://levels/tilesets/initial_place.tres" id="1_dxpbd"]
@@ -97,16 +97,16 @@ color_ramp = SubResource("GradientTexture1D_yo3k3")
 hue_variation_min = -0.020000022
 hue_variation_max = 0.019999977
 
-[node name="Title_Screen" type="CanvasLayer"]
+[node name="Title_Screen" type="CanvasLayer" unique_id=557203240]
 layer = 10
 script = ExtResource("1_2dq6q")
 
-[node name="Music_Auto_Trigger" type="Node" parent="."]
+[node name="Music_Auto_Trigger" type="Node" parent="." unique_id=702013662]
 script = ExtResource("4_vbjqi")
 track = ExtResource("5_0m3ch")
 metadata/_custom_type_script = "uid://bw2tn1b21r6dy"
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1796147066]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -114,7 +114,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1382553476]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -124,7 +124,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.15259093, 0.15259093, 0.15259093, 1)
 
-[node name="Background" type="Control" parent="Control"]
+[node name="Background" type="Control" parent="Control" unique_id=1943489581]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -132,21 +132,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ParallaxLayers" type="Node2D" parent="Control/Background"]
+[node name="ParallaxLayers" type="Node2D" parent="Control/Background" unique_id=933699154]
 z_index = -5
 
-[node name="BG_3" type="Parallax2D" parent="Control/Background/ParallaxLayers"]
+[node name="BG_3" type="Parallax2D" parent="Control/Background/ParallaxLayers" unique_id=1552408366]
 scroll_scale = Vector2(0.5, 0.5)
 
-[node name="Sprite2D" type="Sprite2D" parent="Control/Background/ParallaxLayers/BG_3"]
+[node name="Sprite2D" type="Sprite2D" parent="Control/Background/ParallaxLayers/BG_3" unique_id=2018990708]
 position = Vector2(317, 186)
 scale = Vector2(2.8007813, 1.4375001)
 texture = SubResource("GradientTexture2D_vbjqi")
 
-[node name="Particle_2" type="Parallax2D" parent="Control/Background/ParallaxLayers"]
+[node name="Particle_2" type="Parallax2D" parent="Control/Background/ParallaxLayers" unique_id=934406727]
 scroll_scale = Vector2(1, 0.75)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Control/Background/ParallaxLayers/Particle_2"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Control/Background/ParallaxLayers/Particle_2" unique_id=1823559442]
 modulate = Color(0.9124393, 0.9124393, 0.9124393, 0.78431374)
 material = SubResource("CanvasItemMaterial_0m3ch")
 position = Vector2(344, 411)
@@ -158,52 +158,52 @@ randomness = 0.8
 visibility_rect = Rect2(-1500, -850, 3000, 850)
 process_material = SubResource("ParticleProcessMaterial_fv0o7")
 
-[node name="BG_2" type="Parallax2D" parent="Control/Background/ParallaxLayers"]
+[node name="BG_2" type="Parallax2D" parent="Control/Background/ParallaxLayers" unique_id=1221835414]
 modulate = Color(0.4194535, 0.43637383, 0.5040553, 1)
 scroll_scale = Vector2(0.5, 0.7)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Control/Background/ParallaxLayers/BG_2"]
+[node name="TileMapLayer" type="TileMapLayer" parent="Control/Background/ParallaxLayers/BG_2" unique_id=1174380359]
 position = Vector2(0, 3)
 tile_map_data = PackedByteArray("AAD5/wkAAQAOAAgAAAD5/woAAQAQAAkAAAD5/wsAAQABAAEAAAD5/wwAAQABAAEAAAD5/w0AAQABAAEAAAD5/w4AAQABAAEAAAD6/wkAAQAOAAgAAAD6/woAAQAOAAkAAAD6/wsAAQABAAEAAAD6/wwAAQABAAEAAAD6/w0AAQABAAEAAAD6/w4AAQABAAEAAAD7/wkAAQAOAAgAAAD7/woAAQAPAAkAAAD7/wsAAQABAAEAAAD7/wwAAQABAAEAAAD7/w0AAQABAAEAAAD7/w4AAQABAAEAAAD8/wkAAQAOAAgAAAD8/woAAQAQAAkAAAD8/wsAAQABAAEAAAD8/wwAAQABAAEAAAD8/w0AAQABAAEAAAD8/w4AAQABAAEAAAD9/wkAAQAOAAgAAAD9/woAAQAOAAkAAAD9/wsAAQABAAEAAAD9/wwAAQABAAEAAAD9/w0AAQABAAEAAAD9/w4AAQABAAEAAAD+/wkAAQAOAAgAAAD+/woAAQAPAAkAAAD+/wsAAQABAAEAAAD+/wwAAQABAAEAAAD+/w0AAQABAAEAAAD+/w4AAQABAAEAAAD//wkAAQAOAAgAAAD//woAAQAQAAkAAAD//wsAAQABAAEAAAD//wwAAQABAAEAAAD//w0AAQABAAEAAAD//w4AAQABAAEAAAAAAAkAAQAOAAgAAAAAAAoAAQAOAAkAAAAAAAsAAQABAAEAAAAAAAwAAQABAAEAAAAAAA0AAQABAAEAAAAAAA4AAQABAAEAAAABAAkAAQAOAAgAAAABAAoAAQAOAAkAAAABAAsAAQABAAEAAAABAAwAAQABAAEAAAABAA0AAQABAAEAAAABAA4AAQABAAEAAAACAAkAAQAOAAgAAAACAAoAAQAPAAkAAAACAAsAAQABAAEAAAACAAwAAQABAAEAAAACAA0AAQABAAEAAAACAA4AAQABAAEAAAADAAkAAQAOAAgAAAADAAoAAQAQAAkAAAADAAsAAQABAAEAAAADAAwAAQABAAEAAAADAA0AAQABAAEAAAADAA4AAQABAAEAAAAEAAkAAQAOAAgAAAAEAAoAAQAOAAkAAAAEAAsAAQABAAEAAAAEAAwAAQABAAEAAAAEAA0AAQABAAEAAAAEAA4AAQABAAEAAAAFAAkAAQAOAAgAAAAFAAoAAQAPAAkAAAAFAAsAAQABAAEAAAAFAAwAAQABAAEAAAAFAA0AAQABAAEAAAAFAA4AAQABAAEAAAAGAAkAAQAOAAgAAAAGAAoAAQAQAAkAAAAGAAsAAQABAAEAAAAGAAwAAQABAAEAAAAGAA0AAQABAAEAAAAGAA4AAQABAAEAAAAHAAkAAQAOAAgAAAAHAAoAAQAOAAkAAAAHAAsAAQABAAEAAAAHAAwAAQABAAEAAAAHAA0AAQABAAEAAAAHAA4AAQABAAEAAAAIAAkAAQAOAAgAAAAIAAoAAQAPAAkAAAAIAAsAAQABAAEAAAAIAAwAAQABAAEAAAAIAA0AAQABAAEAAAAIAA4AAQABAAEAAAAJAAkAAQAOAAgAAAAJAAoAAQAQAAkAAAAJAAsAAQABAAEAAAAJAAwAAQABAAEAAAAJAA0AAQABAAEAAAAJAA4AAQABAAEAAAAKAAkAAQAOAAgAAAAKAAoAAQAOAAkAAAAKAAsAAQABAAEAAAAKAAwAAQABAAEAAAAKAA0AAQABAAEAAAAKAA4AAQABAAEAAAALAAkAAQAOAAgAAAALAAoAAQAPAAkAAAALAAsAAQABAAEAAAALAAwAAQABAAEAAAALAA0AAQABAAEAAAALAA4AAQABAAEAAAAMAAkAAQAOAAgAAAAMAAoAAQAQAAkAAAAMAAsAAQABAAEAAAAMAAwAAQABAAEAAAAMAA0AAQABAAEAAAAMAA4AAQABAAEAAAANAAkAAQAOAAgAAAANAAoAAQAOAAkAAAANAAsAAQABAAEAAAANAAwAAQABAAEAAAANAA0AAQABAAEAAAANAA4AAQABAAEAAAAOAAkAAQAOAAgAAAAOAAoAAQAOAAkAAAAOAAsAAQABAAEAAAAOAAwAAQABAAEAAAAOAA0AAQABAAEAAAAOAA4AAQABAAEAAAAPAAkAAQAOAAgAAAAPAAoAAQAPAAkAAAAPAAsAAQABAAEAAAAPAAwAAQABAAEAAAAPAA0AAQABAAEAAAAPAA4AAQABAAEAAAAQAAkAAQAOAAgAAAAQAAoAAQAQAAkAAAAQAAsAAQABAAEAAAAQAAwAAQABAAEAAAAQAA0AAQABAAEAAAAQAA4AAQABAAEAAAARAAkAAQAOAAgAAAARAAoAAQAOAAkAAAARAAsAAQABAAEAAAARAAwAAQABAAEAAAARAA0AAQABAAEAAAARAA4AAQABAAEAAAASAAkAAQAOAAgAAAASAAoAAQAPAAkAAAASAAsAAQABAAEAAAASAAwAAQABAAEAAAASAA0AAQABAAEAAAASAA4AAQABAAEAAAATAAkAAQAOAAgAAAATAAoAAQAQAAkAAAATAAsAAQABAAEAAAATAAwAAQABAAEAAAATAA0AAQABAAEAAAATAA4AAQABAAEAAAAUAAkAAQAOAAgAAAAUAAoAAQAOAAkAAAAUAAsAAQABAAEAAAAUAAwAAQABAAEAAAAUAA0AAQABAAEAAAAUAA4AAQABAAEAAAAVAAkAAQAOAAgAAAAVAAoAAQAPAAkAAAAVAAsAAQABAAEAAAAVAAwAAQABAAEAAAAVAA0AAQABAAEAAAAVAA4AAQABAAEAAAAWAAkAAQAOAAgAAAAWAAoAAQAQAAkAAAAWAAsAAQABAAEAAAAWAAwAAQABAAEAAAAWAA0AAQABAAEAAAAWAA4AAQABAAEAAAAXAAkAAQAOAAgAAAAXAAoAAQAOAAkAAAAXAAsAAQABAAEAAAAXAAwAAQABAAEAAAAXAA0AAQABAAEAAAAXAA4AAQABAAEAAAAYAAkAAQAOAAgAAAAYAAoAAQAPAAkAAAAYAAsAAQABAAEAAAAYAAwAAQABAAEAAAAYAA0AAQABAAEAAAAYAA4AAQABAAEAAAAZAAkAAQAOAAgAAAAZAAoAAQAQAAkAAAAZAAsAAQABAAEAAAAZAAwAAQABAAEAAAAZAA0AAQABAAEAAAAZAA4AAQABAAEAAAAaAAkAAQAOAAgAAAAaAAoAAQAOAAkAAAAaAAsAAQABAAEAAAAaAAwAAQABAAEAAAAaAA0AAQABAAEAAAAaAA4AAQABAAEAAAD5/w8AAQABAAEAAAD5/xAAAQABAAEAAAD6/w8AAQABAAEAAAD6/xAAAQABAAEAAAD7/w8AAQABAAEAAAD7/xAAAQABAAEAAAD8/w8AAQABAAEAAAD8/xAAAQABAAEAAAD9/w8AAQABAAEAAAD9/xAAAQABAAEAAAD+/w8AAQABAAEAAAD+/xAAAQABAAEAAAD//w8AAQABAAEAAAD//xAAAQABAAEAAAAAAA8AAQABAAEAAAAAABAAAQABAAEAAAABAA8AAQABAAEAAAABABAAAQABAAEAAAACAA8AAQABAAEAAAACABAAAQABAAEAAAADAA8AAQABAAEAAAADABAAAQABAAEAAAAEAA8AAQABAAEAAAAEABAAAQABAAEAAAAFAA8AAQABAAEAAAAFABAAAQABAAEAAAAGAA8AAQABAAEAAAAGABAAAQABAAEAAAAHAA8AAQABAAEAAAAHABAAAQABAAEAAAAIAA8AAQABAAEAAAAIABAAAQABAAEAAAAJAA8AAQABAAEAAAAJABAAAQABAAEAAAAKAA8AAQABAAEAAAAKABAAAQABAAEAAAALAA8AAQABAAEAAAALABAAAQABAAEAAAAMAA8AAQABAAEAAAAMABAAAQABAAEAAAANAA8AAQABAAEAAAANABAAAQABAAEAAAAOAA8AAQABAAEAAAAOABAAAQABAAEAAAAPAA8AAQABAAEAAAAPABAAAQABAAEAAAAQAA8AAQABAAEAAAAQABAAAQABAAEAAAARAA8AAQABAAEAAAARABAAAQABAAEAAAASAA8AAQABAAEAAAASABAAAQABAAEAAAATAA8AAQABAAEAAAATABAAAQABAAEAAAAUAA8AAQABAAEAAAAUABAAAQABAAEAAAAVAA8AAQABAAEAAAAVABAAAQABAAEAAAAWAA8AAQABAAEAAAAWABAAAQABAAEAAAAXAA8AAQABAAEAAAAXABAAAQABAAEAAAAYAA8AAQABAAEAAAAYABAAAQABAAEAAAAZAA8AAQABAAEAAAAZABAAAQABAAEAAAAaAA8AAQABAAEAAAAaABAAAQABAAEAAAA=")
 tile_set = ExtResource("1_dxpbd")
 collision_enabled = false
 
-[node name="Dynamics_Fog2" type="Parallax2D" parent="Control/Background/ParallaxLayers"]
+[node name="Dynamics_Fog2" type="Parallax2D" parent="Control/Background/ParallaxLayers" unique_id=489623164]
 z_index = 20
 repeat_size = Vector2(512, 0)
 autoscroll = Vector2(-30, 3)
 repeat_times = 3
 
-[node name="Dynamics_Fog" type="Sprite2D" parent="Control/Background/ParallaxLayers/Dynamics_Fog2"]
+[node name="Dynamics_Fog" type="Sprite2D" parent="Control/Background/ParallaxLayers/Dynamics_Fog2" unique_id=1212399776]
 modulate = Color(0.69757015, 0.48190004, 0.79, 0.15686275)
 material = ExtResource("2_2dq6q")
 position = Vector2(61, 88)
 texture = SubResource("NoiseTexture2D_1oos5")
 
-[node name="Dynamics_Fog" type="Parallax2D" parent="Control/Background/ParallaxLayers"]
+[node name="Dynamics_Fog" type="Parallax2D" parent="Control/Background/ParallaxLayers" unique_id=1017517065]
 z_index = 20
 repeat_size = Vector2(512, 0)
 autoscroll = Vector2(-80, 5)
 repeat_times = 3
 
-[node name="Dynamics_Fog" type="Sprite2D" parent="Control/Background/ParallaxLayers/Dynamics_Fog"]
+[node name="Dynamics_Fog" type="Sprite2D" parent="Control/Background/ParallaxLayers/Dynamics_Fog" unique_id=886937424]
 modulate = Color(0.5827801, 0.40260002, 0.66, 0.09803922)
 material = ExtResource("2_2dq6q")
 position = Vector2(54, 335)
 texture = SubResource("NoiseTexture2D_fh6ay")
 
-[node name="Gradual_Fog" type="Parallax2D" parent="Control/Background/ParallaxLayers"]
+[node name="Gradual_Fog" type="Parallax2D" parent="Control/Background/ParallaxLayers" unique_id=569720138]
 scroll_scale = Vector2(1, 1.1)
 
-[node name="Gradual_Fog" type="Sprite2D" parent="Control/Background/ParallaxLayers/Gradual_Fog"]
+[node name="Gradual_Fog" type="Sprite2D" parent="Control/Background/ParallaxLayers/Gradual_Fog" unique_id=240942430]
 position = Vector2(316.00003, 94.49997)
 scale = Vector2(3.0859375, 2.5410156)
 texture = SubResource("GradientTexture2D_jabur")
 
-[node name="Particle_1" type="Parallax2D" parent="Control/Background/ParallaxLayers"]
+[node name="Particle_1" type="Parallax2D" parent="Control/Background/ParallaxLayers" unique_id=131540374]
 scroll_scale = Vector2(1, 1.2)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Control/Background/ParallaxLayers/Particle_1"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Control/Background/ParallaxLayers/Particle_1" unique_id=180061088]
 z_index = 25
 position = Vector2(319, 436)
 texture = SubResource("GradientTexture2D_fk0fn")
@@ -213,7 +213,7 @@ randomness = 0.8
 visibility_rect = Rect2(-1500, -850, 3000, 850)
 process_material = SubResource("ParticleProcessMaterial_p7x7j")
 
-[node name="Main_Menu" type="Control" parent="Control"]
+[node name="Main_Menu" type="Control" parent="Control" unique_id=2026125855]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -221,7 +221,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Main" type="VBoxContainer" parent="Control/Main_Menu"]
+[node name="Main" type="VBoxContainer" parent="Control/Main_Menu" unique_id=602257267]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -237,12 +237,12 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Logo" type="Control" parent="Control/Main_Menu/Main"]
+[node name="Logo" type="Control" parent="Control/Main_Menu/Main" unique_id=1879682847]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="Control/Main_Menu/Main/Logo"]
+[node name="Label" type="Label" parent="Control/Main_Menu/Main/Logo" unique_id=1673269205]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -256,22 +256,22 @@ offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
-text = "失域"
+text = "无名小游"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="New_Game" type="Button" parent="Control/Main_Menu/Main"]
+[node name="New_Game" type="Button" parent="Control/Main_Menu/Main" unique_id=257011180]
 unique_name_in_owner = true
 layout_mode = 2
 text = "新开始"
 
-[node name="Load_Game" type="Button" parent="Control/Main_Menu/Main"]
+[node name="Load_Game" type="Button" parent="Control/Main_Menu/Main" unique_id=1720431838]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 text = "   回忆..."
 
-[node name="Exit_Game" type="Button" parent="Control/Main_Menu"]
+[node name="Quit_Game" type="Button" parent="Control/Main_Menu" unique_id=812713136]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -287,7 +287,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "退出"
 
-[node name="Load_Menu" type="Control" parent="Control"]
+[node name="Load_Menu" type="Control" parent="Control" unique_id=1761975294]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -296,7 +296,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Vbox" type="VBoxContainer" parent="Control/Load_Menu"]
+[node name="Vbox" type="VBoxContainer" parent="Control/Load_Menu" unique_id=1478210917]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -312,12 +312,12 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Hint" type="Control" parent="Control/Load_Menu/Vbox"]
+[node name="Hint" type="Control" parent="Control/Load_Menu/Vbox" unique_id=1968206049]
 custom_minimum_size = Vector2(100, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="Control/Load_Menu/Vbox/Hint"]
+[node name="Label" type="Label" parent="Control/Load_Menu/Vbox/Hint" unique_id=1308810815]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -335,22 +335,22 @@ text = "选择记忆..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Load_Game_ScrollContainer" type="ScrollContainer" parent="Control/Load_Menu/Vbox"]
+[node name="Load_Game_ScrollContainer" type="ScrollContainer" parent="Control/Load_Menu/Vbox" unique_id=1380039202]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
 
-[node name="Load_Save_Menu" type="VBoxContainer" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer"]
+[node name="Load_Save_Menu" type="VBoxContainer" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer" unique_id=1229076171]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Start" type="Control" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu"]
+[node name="Start" type="Control" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu" unique_id=1817102964]
 layout_mode = 2
 
-[node name="Load_Slot_1" type="Button" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu"]
+[node name="Load_Slot_1" type="Button" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu" unique_id=614009800]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
@@ -358,7 +358,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "载入记忆01"
 
-[node name="Load_Slot_2" type="Button" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu"]
+[node name="Load_Slot_2" type="Button" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu" unique_id=448203318]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
@@ -366,7 +366,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "载入记忆02"
 
-[node name="Load_Slot_3" type="Button" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu"]
+[node name="Load_Slot_3" type="Button" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu" unique_id=764474134]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
@@ -374,7 +374,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "载入记忆03"
 
-[node name="Load_Slot_4" type="Button" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu"]
+[node name="Load_Slot_4" type="Button" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu" unique_id=1287747747]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
@@ -382,7 +382,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "载入记忆04"
 
-[node name="Load_Slot_5" type="Button" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu"]
+[node name="Load_Slot_5" type="Button" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu" unique_id=558899330]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
@@ -390,10 +390,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "载入记忆05"
 
-[node name="End" type="Control" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu"]
+[node name="End" type="Control" parent="Control/Load_Menu/Vbox/Load_Game_ScrollContainer/Load_Save_Menu" unique_id=45670776]
 layout_mode = 2
 
-[node name="Load_Menu_Return" type="Button" parent="Control/Load_Menu"]
+[node name="Load_Menu_Return" type="Button" parent="Control/Load_Menu" unique_id=209076015]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -410,7 +410,7 @@ grow_vertical = 0
 text = "返回
 "
 
-[node name="New_Start_Menu" type="Control" parent="Control"]
+[node name="New_Start_Menu" type="Control" parent="Control" unique_id=1699552273]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -419,7 +419,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Vbox" type="VBoxContainer" parent="Control/New_Start_Menu"]
+[node name="Vbox" type="VBoxContainer" parent="Control/New_Start_Menu" unique_id=877906672]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -435,12 +435,12 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Hint" type="Control" parent="Control/New_Start_Menu/Vbox"]
+[node name="Hint" type="Control" parent="Control/New_Start_Menu/Vbox" unique_id=986427409]
 custom_minimum_size = Vector2(100, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="Control/New_Start_Menu/Vbox/Hint"]
+[node name="Label" type="Label" parent="Control/New_Start_Menu/Vbox/Hint" unique_id=428899629]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -458,22 +458,22 @@ text = "开始新记忆..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="New_Game_ScrollContainer" type="ScrollContainer" parent="Control/New_Start_Menu/Vbox"]
+[node name="New_Game_ScrollContainer" type="ScrollContainer" parent="Control/New_Start_Menu/Vbox" unique_id=350510833]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
 
-[node name="Load_Save_Menu" type="VBoxContainer" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer"]
+[node name="Load_Save_Menu" type="VBoxContainer" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer" unique_id=218823987]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Start" type="Control" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu"]
+[node name="Start" type="Control" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu" unique_id=939818659]
 layout_mode = 2
 
-[node name="Start_New_1" type="Button" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu"]
+[node name="Start_New_1" type="Button" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu" unique_id=433115920]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
@@ -481,7 +481,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "新记忆01"
 
-[node name="Start_New_2" type="Button" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu"]
+[node name="Start_New_2" type="Button" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu" unique_id=528377094]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
@@ -489,7 +489,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "新记忆02"
 
-[node name="Start_New_3" type="Button" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu"]
+[node name="Start_New_3" type="Button" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu" unique_id=936355381]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
@@ -497,7 +497,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "新记忆03"
 
-[node name="Start_New_4" type="Button" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu"]
+[node name="Start_New_4" type="Button" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu" unique_id=1769868134]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
@@ -505,7 +505,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "新记忆04"
 
-[node name="Start_New_5" type="Button" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu"]
+[node name="Start_New_5" type="Button" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu" unique_id=1175441002]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
@@ -513,10 +513,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "新记忆05"
 
-[node name="End" type="Control" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu"]
+[node name="End" type="Control" parent="Control/New_Start_Menu/Vbox/New_Game_ScrollContainer/Load_Save_Menu" unique_id=624186864]
 layout_mode = 2
 
-[node name="New_Start_Menu_Return" type="Button" parent="Control/New_Start_Menu"]
+[node name="New_Start_Menu_Return" type="Button" parent="Control/New_Start_Menu" unique_id=1481277332]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -533,4 +533,4 @@ grow_vertical = 0
 text = "返回
 "
 
-[connection signal="pressed" from="Control/Main_Menu/Exit_Game" to="." method="_on_exit_game_pressed"]
+[connection signal="pressed" from="Control/Main_Menu/Quit_Game" to="." method="_on_quit_game_pressed"]

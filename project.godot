@@ -8,12 +8,21 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
-config/name="2D横版类银河恶魔城"
+config/name="类银河恶魔城"
 run/main_scene="uid://ctrdcgddey34q"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/bg_color=Color(0.15248436, 0.1512925, 0.2182942, 1)
 config/icon="uid://copoux07qo0pc"
+
+[audio]
+
+buses/default_bus_layout="uid://bkekn13oe8nbk"
 
 [autoload]
 
@@ -22,6 +31,7 @@ SaveManager="*res://00_global/save_manager.gd"
 Messages="*res://00_global/messages.gd"
 PlayerHud="*res://00_global/player_hud/player_hud.tscn"
 Audio="*res://00_global/audio/audio.tscn"
+VisualEffects="*uid://dkd3o8qxlgi36"
 
 [display]
 
@@ -133,7 +143,11 @@ pause={
 2d_physics/layer_1="地面"
 2d_physics/layer_2="单向平台"
 2d_physics/layer_5="玩家"
+2d_physics/layer_6="敌人"
+2d_physics/layer_7="易碎物"
+2d_physics/layer_8="坚硬可破坏物"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+anti_aliasing/quality/use_taa=true

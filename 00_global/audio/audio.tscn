@@ -1,11 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1ubwn08s5tlk"]
+[gd_scene format=3 uid="uid://d1ubwn08s5tlk"]
 
 [ext_resource type="Script" uid="uid://c38k1h1vu0gug" path="res://00_global/audio/audio.gd" id="1_qqy3t"]
-[ext_resource type="AudioStream" uid="uid://bskppvhq8j37f" path="res://music/sfx/ui_sfx/ui_select.sfxr" id="2_jmofo"]
-[ext_resource type="AudioStream" uid="uid://ftmg8yxanxcc" path="res://music/sfx/ui_sfx/ui_press.sfxr" id="3_pcrpo"]
-[ext_resource type="AudioStream" uid="uid://bye5axbpqvb17" path="res://music/sfx/ui_sfx/ui_cancel.sfxr" id="4_4l0er"]
-[ext_resource type="AudioStream" uid="uid://br45nib62uig6" path="res://music/sfx/ui_sfx/ui_success.wav" id="5_dvici"]
-[ext_resource type="AudioStream" uid="uid://b410gi75ckcoi" path="res://music/sfx/ui_sfx/ui_error.sfxr" id="6_6abs4"]
+[ext_resource type="AudioStream" uid="uid://bskppvhq8j37f" path="res://music/ui_sfx/ui_select.sfxr" id="2_jmofo"]
+[ext_resource type="AudioStream" uid="uid://ftmg8yxanxcc" path="res://music/ui_sfx/ui_press.sfxr" id="3_pcrpo"]
+[ext_resource type="AudioStream" uid="uid://bye5axbpqvb17" path="res://music/ui_sfx/ui_cancel.sfxr" id="4_4l0er"]
+[ext_resource type="AudioStream" uid="uid://br45nib62uig6" path="res://music/ui_sfx/ui_success.wav" id="5_dvici"]
+[ext_resource type="AudioStream" uid="uid://b410gi75ckcoi" path="res://music/ui_sfx/ui_error.sfxr" id="6_6abs4"]
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_4l0er"]
 polyphony = 16

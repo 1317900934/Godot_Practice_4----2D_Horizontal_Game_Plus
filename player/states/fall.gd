@@ -15,6 +15,7 @@ var coyote_timer: float = 0
 # 落地前预先跳跃计时器
 var jump_buffer_timer: float = 0
 
+@onready var land_audio: AudioStreamPlayer2D = $"../../Audio/Land_Audio"
 
 
 # 初始化
@@ -28,8 +29,16 @@ func enter():
 	player.anim_player.pause()
 	
 	player.gravity_multiper = fall_gravity_multiper
-	if player.previous_state == jump:
+	
+	if player.jump_count == 0:
+		player.jump_count = 1
+	
+	var prev: Player_State = player.previous_state
+	if prev == jump or prev == attack or prev == dash:
 		coyote_timer = 0
+	elif player.previous_state == crouch:
+		coyote_timer = 0
+		player.jump_count = 1
 	else:
 		coyote_timer = coyote_time
 
@@ -42,13 +51,28 @@ func exit():
 
 # 用户输入处理
 func handle_input(_event: InputEvent) -> Player_State:
+	
+	if _event.is_action_pressed("dash, cancel") and player.can_dash():
+		return dash
+	
+	if _event.is_action_pressed("attack"):
+		return attack
+	
 	if _event.is_action_pressed("jump"):
 		if coyote_timer > 0:
+			player.jump_count = 0
+			return jump
+		elif player.jump_count <= 1 and player.double_jump:
 			return jump
 		else:
 			jump_buffer_timer = buffer_time
 	
 	return next_state
+
+
+
+
+
 
 
 # 状态进行
@@ -59,11 +83,21 @@ func process(_delta: float) -> Player_State:
 	return next_state
 
 
+
+
+
+
+
 # 物理状态进行
 func physics_process(_delta: float) -> Player_State:
 	if player.is_on_floor():
+		
+		land_audio.play()
+		VisualEffects.land_dust(player.global_position)
+		
 		#if jump_buffer_timer > 0 and Input.is_action_pressed("jump"):
 		if jump_buffer_timer > 0:
+			player.jump_count = 0
 			return jump
 		if Input.is_action_pressed("crouch"):
 			return crouch

@@ -12,6 +12,8 @@ func init():
 # 进入状态
 func enter():
 	player.anim_player.play("idle")
+	player.jump_count = 0
+	player.dash_count = 0
 
 
 # 退出状态
@@ -21,9 +23,14 @@ func exit():
 
 # 用户输入处理
 func handle_input(_event: InputEvent) -> Player_State:
+	
+	if _event.is_action_pressed("dash, cancel") and player.can_dash():
+		return dash
+	if _event.is_action_pressed("attack"):
+		return attack
 	if _event.is_action_pressed("jump"):
 		return jump
-	elif _event.is_action_pressed("crouch"):
+	if _event.is_action_pressed("crouch"):
 		return crouch
 	
 	return null

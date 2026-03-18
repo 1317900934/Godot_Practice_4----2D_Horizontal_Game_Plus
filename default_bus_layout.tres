@@ -1,7 +1,8 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://bkekn13oe8nbk"]
+[gd_resource type="AudioBusLayout" format=3 uid="uid://bkekn13oe8nbk"]
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
 resource_name = "Reverb"
+room_size = 0.0
 
 [resource]
 bus/1/name = &"EffectPass"

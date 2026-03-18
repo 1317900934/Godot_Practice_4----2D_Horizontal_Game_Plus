@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dvs0hbebqa8lc"]
+
+[ext_resource type="Script" uid="uid://2nba5dhqf6s5" path="res://components/scripts/breakable.gd" id="1_jf5ai"]
+[ext_resource type="Script" uid="uid://c26fxjna5tm8r" path="res://00_global/visual_effects/hit_particles_settings.gd" id="2_shlv4"]
+[ext_resource type="Resource" uid="uid://5or6y33jrsmu" path="res://00_global/visual_effects/hit_particles_settings/hit_wood_medium.tres" id="3_aq2gm"]
+[ext_resource type="Resource" uid="uid://buaigl27jh5jv" path="res://00_global/visual_effects/hit_particles_settings/hit_wood_small.tres" id="4_5nrje"]
+[ext_resource type="Resource" uid="uid://lc6xhrk8ddho" path="res://00_global/visual_effects/hit_particles_settings/hit_wood_large.tres" id="5_a8u6p"]
+[ext_resource type="Texture2D" uid="uid://dgh0jufave77g" path="res://components/sprites/props_destructible.png" id="6_se8a1"]
+[ext_resource type="Script" uid="uid://cl5gsrb0mkyyx" path="res://components/scripts/hurt_area.gd" id="7_0q8u0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7dth"]
+size = Vector2(38, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jf5ai"]
+size = Vector2(36, 30)
+
+[node name="Crate" type="Node2D" unique_id=1835503732]
+script = ExtResource("1_jf5ai")
+hit_particles = Array[ExtResource("2_shlv4")]([ExtResource("3_aq2gm"), ExtResource("4_5nrje")])
+destroy_particles = Array[ExtResource("2_shlv4")]([ExtResource("5_a8u6p"), ExtResource("3_aq2gm")])
+metadata/_custom_type_script = "uid://2nba5dhqf6s5"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=326254366]
+texture = ExtResource("6_se8a1")
+region_enabled = true
+region_rect = Rect2(53, 28, 39, 35)
+
+[node name="Hurt_Area" type="Area2D" parent="." unique_id=1296617510]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("7_0q8u0")
+metadata/_custom_type_script = "uid://cl5gsrb0mkyyx"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt_Area" unique_id=60670400]
+shape = SubResource("RectangleShape2D_v7dth")
+debug_color = Color(0.38491005, 0.61, 0.1098, 0.41960785)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1522166002]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1936627977]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_jf5ai")
+debug_color = Color(0.08449999, 0.60287493, 0.65, 0.35686275)

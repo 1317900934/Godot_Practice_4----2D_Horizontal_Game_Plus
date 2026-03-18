@@ -8,7 +8,6 @@ extends CanvasLayer
 
 @onready var new_game: Button = %New_Game
 @onready var load_game: Button = %Load_Game
-@onready var exit_game: Button = %Exit_Game
 
 @onready var start_new_1: Button = %Start_New_1
 @onready var start_new_2: Button = %Start_New_2
@@ -120,5 +119,5 @@ func _on_load_pressed(slot: int):
 
 
 # 退出游戏
-func _on_exit_game_pressed() -> void:
+func _on_quit_game_pressed() -> void:
 	get_tree().quit()

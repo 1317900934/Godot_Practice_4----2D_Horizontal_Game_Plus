@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://bye5axbpqvb17"
+path="res://.godot/imported/ui_cancel.sfxr-b795cf7812a2ec9dab7db4fd0fe16259.sample"
+
+[deps]
+
+source_file="res://music/ui_sfx/ui_cancel.sfxr"
+dest_files=["res://.godot/imported/ui_cancel.sfxr-b795cf7812a2ec9dab7db4fd0fe16259.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0
